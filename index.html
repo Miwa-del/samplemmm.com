@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+ <title>採用情報 | Daigas G&amp;P Solution サンプルLP</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-soft: #ffffff;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --accent: #0284c7;   /* 青 */
+      --accent-soft: #e0f2fe;
+      --accent-green: #16a34a; /* 少しだけ緑 */
+      --text-main: #111827;
+      --text-sub: #6b7280;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --shadow-lg: 0 22px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: linear-gradient(to bottom, #f9fafb 0, #f3f4f6 40%, #f5f5f7 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    main {
+      flex: 1;
+      padding-bottom: 56px;
+    }
+
+    .section {
+      padding: 72px 0 40px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    /* HEADER（白・シンプル） */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+    }
+
+    .header-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .logo-text-main {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .logo-text-sub {
+      font-size: 10px;
+      color: var(--text-sub);
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      font-size: 12px;
+      color: var(--text-sub);
+      align-items: center;
+    }
+
+    .header-nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .header-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transition: width 0.16s ease;
+    }
+
+    .header-nav a:hover {
+      color: var(--text-main);
+    }
+
+    .header-nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-chip {
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      color: var(--text-sub);
+      cursor: pointer;
+    }
+
+    .btn-header-main {
+      font-size: 11px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 650;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+      cursor: pointer;
+    }
+
+    /* HERO：明るい・画像どーん＋中央寄せ＋インパクト */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      margin-bottom: 72px;
+      overflow: hidden;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(1.05) saturate(1.05);
+      transform: scale(1.03);
+    }
+
+    /* 左側少し白くしてテキスト読みやすく＋全体明るく */
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(255,255,255,0.92), rgba(255,255,255,0.15) 55%),
+        linear-gradient(to top, rgba(255,255,255,0.6), rgba(255,255,255,0.0) 60%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 72px 20px 80px;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 26px 32px 28px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      transform: translateY(10px);
+    }
+
+    /* 左にアクセントバー */
+    .hero-content::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 24px;
+      width: 4px;
+      height: 64px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-green));
+    }
+
+    .hero-label {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #ecf5ff;
+      border: 1px solid #dbeafe;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-green);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 3.8vw, 36px);
+      font-weight: 750;
+      line-height: 1.35;
+      color: #0b1120;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-lead {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary {
+      font-size: 13px;
+      padding: 11px 24px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.3);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline {
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-outline:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      color: #475569;
+    }
+
+    /* HEROに少しかぶせるセクション */
+    .section--overlap {
+      margin-top: -40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* RECRUIT MENU（カード4つ） */
+    .recruit-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .menu-card {
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      color: var(--text-sub);
+      box-shadow: 0 10px 26px rgba(148, 163, 184, 0.12);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, translate 0.16s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(148, 163, 184, 0.22);
+    }
+
+    .menu-card-visual {
+      position: relative;
+      height: 160px;
+      overflow: hidden;
+    }
+
+    .menu-card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.25s ease;
+    }
+
+    .menu-card:hover .menu-card-visual img {
+      transform: scale(1.06);
+    }
+
+    .menu-card-label {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+    }
+
+    .menu-card-body {
+      padding: 12px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .menu-card-title {
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--text-main);
+    }
+
+    .menu-card-link {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    /* KNOW：会社を知る */
+    .know-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .know-card {
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 14px 14px 12px;
+      font-size: 12px;
+      color: var(--text-sub);
+      box-shadow: 0 8px 22px rgba(148, 163, 184, 0.12);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .know-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(148, 163, 184, 0.18);
+    }
+
+    .know-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    /* NEWS：採用ニュース */
+    .news-list {
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(148, 163, 184, 0.12);
+      font-size: 12px;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 120px 90px 1fr;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 14px;
+      border-top: 1px solid #e5e7eb;
+      transition: background 0.12s ease;
+    }
+
+    .news-item:first-child {
+      border-top: none;
+    }
+
+    .news-item:hover {
+      background: #f9fafb;
+    }
+
+    .news-date {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .news-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .news-title {
+      color: var(--text-main);
+    }
+
+    .news-more {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    /* RELATED COMPANIES */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      font-size: 12px;
+    }
+
+    .related-card {
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 10px 10px 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: var(--text-sub);
+      box-shadow: 0 6px 18px rgba(148, 163, 184, 0.12);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(148, 163, 184, 0.2);
+    }
+
+    .related-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .related-link {
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #e5e7eb;
+      background: #ffffff;
+    }
+
+    .footer-inner {
+      padding: 14px 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+    }
+
+    /* responsive */
+    @media (max-width: 960px) {
+      .hero {
+        min-height: 70vh;
+      }
+
+      .hero-inner {
+        padding: 64px 16px 72px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .recruit-menu-grid,
+      .know-grid,
+      .related-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .header-nav {
+        display: none;
+      }
+
+      .section {
+        padding: 56px 0 32px;
+      }
+
+      .section--overlap {
+        margin-top: -24px;
+      }
+
+      .recruit-menu-grid,
+      .know-grid,
+      .related-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .news-item {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-content::before {
+        display: none; /* スマホではバーを消して少しスッキリ */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="container header-inner">
+        <a href="#" class="header-logo">
+          <div class="logo-mark">OG</div>
+          <div>
+            <div class="logo-text-main">Daigas G&amp;P Solution</div>
+            <div class="logo-text-sub">採用情報（ポートフォリオ用サンプル）</div>
+
+          </div>
+        </a>
+        <nav class="header-nav">
+          <a href="#recruit-menu">新卒採用</a>
+          <a href="#career">キャリア採用</a>
+          <a href="#know">会社を知る</a>
+          <a href="#news">採用ニュース</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-chip">説明会・イベント</button>
+          <button class="btn-header-main">ENTRY / マイページ</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO：明るい×画像メイン -->
+      <section class="hero">
+        <div class="hero-bg">
+          <img src="images/hero-osaka-day.png" alt="昼の大阪の街並み">
+          <div class="hero-bg-overlay"></div>
+        </div>
+
+        <div class="container hero-inner">
+          <div class="hero-content">
+           <div class="hero-label">
+           <span class="hero-dot"></span>
+          Daigas G&amp;P Solution｜採用情報
+         </div>
+
+
+            <h1 class="hero-title">
+              エネルギーの<span>あたりまえ</span>を、<br />
+              次の時代へつなぐ仲間を募集します。
+            </h1>
+
+            <p class="hero-lead">
+              Daigas G&amp;P Solutionは、ガス・電気の安定供給に加え、再エネ・まちづくり・DXなど
+  新しいフィールドへ挑戦し続けるエネルギー＆サービス企業です。
+            </p>
+
+            <p class="hero-meta">
+              新卒採用（事務系・技術系・デジタル系）／キャリア採用／インターンシップ・イベント情報 など
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn-primary">新卒採用 2026｜ENTRY</button>
+              <button class="btn-outline">キャリア採用 募集職種一覧</button>
+            </div>
+
+            <div class="hero-tags">
+              <span class="tag"># エネルギーインフラ</span>
+              <span class="tag"># カーボンニュートラル</span>
+              <span class="tag"># 関西発グローバル</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECRUIT MENU（HEROに少しかぶせる） -->
+      <section class="section section--overlap" id="recruit-menu">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">RECRUIT</div>
+            <h2 class="section-title">募集コース・採用メニュー</h2>
+            <p class="section-sub">
+              コースごとの紹介ページやインターンシップ情報、マイページへはこちらから。
+            </p>
+          </div>
+
+          <div class="recruit-menu-grid">
+            <!-- 新卒 事務系 -->
+            <article class="menu-card">
+              <div class="menu-card-visual">
+                <img src="images/Office.png"
+                     alt="オフィスで打ち合わせをする事務系総合職のイメージ写真">
+                <div class="menu-card-label">新卒採用</div>
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-title">事務系総合職</div>
+                <p>
+                  事業企画、営業、マーケティング、人事、経営企画など。
+                  エネルギーとサービスの未来を描くビジネス職です。
+                </p>
+                <a href="#" class="menu-card-link">事務系総合職を詳しく見る →</a>
+              </div>
+            </article>
+
+            <!-- 新卒 技術系 -->
+            <article class="menu-card">
+              <div class="menu-card-visual">
+                <img src="images/Plant Engineer.png"
+                     alt="プラント設備を点検する技術系総合職のイメージ写真">
+                <div class="menu-card-label">新卒採用</div>
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-title">技術系総合職</div>
+                <p>
+                  プラント設計・保全、供給設備の計画・運用、研究開発など。
+                  安定供給と技術革新を支えるエンジニアリング職です。
+                </p>
+                <a href="#" class="menu-card-link">技術系総合職を詳しく見る →</a>
+              </div>
+            </article>
+
+            <!-- 新卒 デジタル・DX系 -->
+            <article class="menu-card">
+              <div class="menu-card-visual">
+                <img src="images/DX.png"
+                     alt="データとDXに取り組むデジタル系社員のイメージ写真">
+                <div class="menu-card-label">新卒採用</div>
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-title">DX・デジタル系</div>
+                <p>
+                  データ分析、システム企画、サービスDXなど。
+                  デジタルの力で業務とお客さま体験をアップデートする職種です。
+                </p>
+                <a href="#" class="menu-card-link">DX・デジタル系を詳しく見る →</a>
+              </div>
+            </article>
+
+            <!-- キャリア採用 -->
+            <article class="menu-card" id="career">
+              <div class="menu-card-visual">
+                <img src="images/Career.png"
+                     alt="キャリア採用で活躍する社員のイメージ写真">
+                <div class="menu-card-label">キャリア採用</div>
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-title">キャリア採用</div>
+                <p>
+                  即戦力として各事業・コーポレート部門で活躍いただく中途採用。
+                  募集職種・応募方法はこちらから。
+                </p>
+                <a href="#" class="menu-card-link">キャリア採用 募集職種一覧 →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- KNOW -->
+      <section class="section" id="know">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">KNOW</div>
+            <h2 class="section-title">Daigas G&amp;P Solutionをもっと知る</h2>
+<p class="section-sub">
+  事業・カルチャー・人・数字。さまざまな切り口からDaigas G&amp;P Solutionを紹介します。
+</p>
+          </div>
+
+          <div class="know-grid">
+            <article class="know-card">
+              <h3 class="know-title">Daigas Way（価値観・カルチャー）</h3>
+              <p>
+                「エネルギーとサービスで、期待を超える。」  
+                Daigasグループのパーパス・バリュー、カルチャーをまとめたコンテンツです。
+              </p>
+            </article>
+
+            <article class="know-card">
+              <h3 class="know-title">仕事と人を知る（インタビュー）</h3>
+              <p>
+                若手社員の一日、プロジェクトストーリー、キャリアパスなど、
+                実際に働くひとびとの声を中心に紹介します。
+              </p>
+            </article>
+
+            <article class="know-card">
+              <h3 class="know-title">数字で見るDaigas G&amp;P Solution</h3>
+<p>
+  事業規模、供給戸数、再エネ比率、平均勤続年数など、
+  客観的なデータからDaigas G&amp;P Solutionをイメージできるページです。
+</p>
+
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWS -->
+      <section class="section" id="news">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">NEWS</div>
+            <h2 class="section-title">採用ニュース</h2>
+            <p class="section-sub">
+              インターンシップ・イベント・選考情報など、最新の採用関連ニュースをお届けします。
+            </p>
+          </div>
+
+          <div class="news-list">
+            <article class="news-item">
+              <div class="news-date">2025年12月 9日</div>
+              <div class="news-tag">新卒採用</div>
+              <a href="#" class="news-title">
+                【2027卒】1day仕事体験｜エネルギー×DXワークショップの募集を開始しました
+              </a>
+            </article>
+            <article class="news-item">
+              <div class="news-date">2025年12月 5日</div>
+              <div class="news-tag">新卒採用</div>
+              <a href="#" class="news-title">
+                【技術系向け】発電所・パイプライン見学ツアー付き仕事研究イベントを開催します
+              </a>
+            </article>
+            <article class="news-item">
+              <div class="news-date">2025年11月 28日</div>
+              <div class="news-tag">キャリア採用</div>
+              <a href="#" class="news-title">
+                カーボンニュートラル推進・DX関連ポジションのキャリア採用募集を開始しました
+              </a>
+            </article>
+            <article class="news-item">
+              <div class="news-date">2025年11月 20日</div>
+              <div class="news-tag">お知らせ</div>
+              <a href="#" class="news-title">
+                Daigasグループ採用サイト（サンプル版）をリニューアルオープンしました
+              </a>
+            </article>
+          </div>
+
+          <a href="#" class="news-more">採用ニュース一覧を見る →</a>
+        </div>
+      </section>
+
+      <!-- RELATED COMPANIES -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">RELATED COMPANIES</div>
+            <h2 class="section-title">Daigasグループの採用情報</h2>
+            <p class="section-sub">
+              グループ各社でも、エネルギー・不動産・IT・サービスなど、さまざまな領域で採用を行っています。
+              実際のグループ構成に合わせて内容を差し替えてください。
+            </p>
+          </div>
+
+          <div class="related-grid">
+            <article class="related-card">
+              <div class="related-name">Daigasエネルギー株式会社</div>
+              <p>ガス・電力小売事業を担うグループ会社。</p>
+              <a href="#" class="related-link">新卒・キャリア採用情報 →</a>
+            </article>
+            <article class="related-card">
+              <div class="related-name">Daigas都市開発株式会社</div>
+              <p>まちづくり・不動産開発・商業施設運営など。</p>
+              <a href="#" class="related-link">採用情報 →</a>
+            </article>
+            <article class="related-card">
+              <div class="related-name">Daigasソリューションズ株式会社</div>
+              <p>法人向けソリューション・DX支援を行うグループ会社。</p>
+              <a href="#" class="related-link">採用情報 →</a>
+            </article>
+            <article class="related-card">
+              <div class="related-name">その他グループ各社</div>
+              <p>エネルギーサービス・IT・海外事業など。</p>
+              <a href="#" class="related-link">グループ採用情報一覧 →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <div>© Sample Design for Portfolio / Daigas G&amp;P Solution Careers</div>
+        <div class="footer-links">
+          <a href="#">サイトマップ</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">お問い合わせ</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
