@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Decision & Work｜この仕事を選んだ理由（サンプル）｜Daigas G&P Solution</title>
+  <meta name="description" content="Daigas G&P Solution採用（サンプル）｜意思決定のストーリーをQ&Aで届けるインタビュー記事。" />
+
+  <style>
+    :root{
+      --bg:#f6f9ff;
+      --panel:#ffffff;
+      --text:#0b1b3a;
+      --muted:#516b92;
+      --line:rgba(11,27,58,.10);
+
+      --accent:#1e6bff;
+      --mint:#18c29c;
+      --purple:#7a5cff;
+
+      --radius:18px;
+      --shadow:0 20px 55px rgba(12,35,80,.14);
+      --shadow2:0 12px 28px rgba(12,35,80,.10);
+      --max:1180px;
+      --content:860px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI","Hiragino Sans","Noto Sans JP","Yu Gothic", sans-serif;
+      color:var(--text);
+      line-height:1.85;
+      background:
+        radial-gradient(1000px 560px at 12% 0%, rgba(30,107,255,.12), transparent 55%),
+        radial-gradient(900px 520px at 88% 0%, rgba(122,92,255,.09), transparent 60%),
+        radial-gradient(900px 520px at 70% 100%, rgba(24,194,156,.10), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    .content{max-width:var(--content); margin:0 auto;}
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+
+    /* progress bar */
+    .progress{position:fixed; inset:0 0 auto 0; height:3px; z-index:100;}
+    .progress i{
+      display:block; height:100%; width:0%;
+      background:linear-gradient(90deg, var(--accent), var(--mint));
+      box-shadow:0 6px 16px rgba(30,107,255,.25);
+    }
+
+    /* header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(246,249,255,.82);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .header-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0;}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+    .mark{
+      width:42px; height:42px; border-radius:14px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg, rgba(30,107,255,.95), rgba(122,92,255,.88));
+      color:#fff; font-weight:900; letter-spacing:.04em;
+      box-shadow:0 10px 22px rgba(30,107,255,.18);
+      flex:0 0 auto;
+    }
+    .brand strong{display:block; font-size:14px}
+    .brand small{display:block; font-size:12px; color:rgba(11,27,58,.55)}
+    .nav{
+      display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end;
+      align-items:center;
+    }
+    .nav a{
+      text-decoration:none; font-size:13px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid transparent; color:rgba(11,27,58,.70);
+      transition:.15s ease;
+      white-space:nowrap;
+    }
+    .nav a:hover{border-color:rgba(30,107,255,.20); background:rgba(30,107,255,.06);}
+
+    @media (max-width:820px){
+      .brand small{display:none}
+      .nav{gap:6px}
+      .nav a{font-size:12px; padding:7px 9px}
+    }
+
+    /* ===== HERO (A案：写真ドカン) ===== */
+    .hero{
+      padding:18px 0 10px;
+    }
+    .hero-wrap{
+      position:relative;
+      border-radius:32px;
+      overflow:hidden;
+      border:1px solid rgba(11,27,58,.08);
+      box-shadow:var(--shadow);
+      background:#fff;
+    }
+
+    /* 16:9 固定で“ドカン” */
+    .hero-media{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      overflow:hidden;
+      background:#0b1b3a;
+    }
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position: 55% 35%;
+      transform:scale(1.02);
+    }
+
+    /* 左から濃い→右へ抜ける（文字可読性） */
+    .hero-media::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg,
+          rgba(10,30,60,.72) 0%,
+          rgba(10,30,60,.55) 28%,
+          rgba(10,30,60,.18) 55%,
+          rgba(10,30,60,0) 75%
+        ),
+        radial-gradient(900px 520px at 16% 30%, rgba(30,107,255,.18), transparent 58%);
+      pointer-events:none;
+    }
+
+    .hero-copy{
+      position:absolute;
+      left:clamp(16px, 5.5vw, 56px);
+      bottom:clamp(16px, 5vw, 46px);
+      z-index:2;
+      max-width: min(560px, 70%);
+      color:#fff;
+    }
+    .hero-kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      width:fit-content;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.22);
+      font-size:12px;
+      letter-spacing:.08em;
+      font-weight:900;
+      backdrop-filter: blur(10px);
+    }
+    .hero-title{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 3.6vw, 50px);
+      line-height:1.15;
+      letter-spacing:.01em;
+      font-weight:900;
+      text-shadow:0 14px 40px rgba(0,0,0,.30);
+    }
+    .hero-lead{
+      margin:0;
+      font-size:14px;
+      line-height:1.85;
+      color:rgba(255,255,255,.92);
+      max-width: 60ch;
+      text-shadow:0 10px 28px rgba(0,0,0,.28);
+    }
+
+    .hero-tags{
+      margin-top:14px;
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .pill{
+      font-size:12px; font-weight:900;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.12);
+      color:rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      white-space:nowrap;
+    }
+    .pill.mint{ border-color:rgba(24,194,156,.42); background:rgba(24,194,156,.16); }
+    .pill.blue{ border-color:rgba(30,107,255,.42); background:rgba(30,107,255,.16); }
+
+    /* ヒーロー下：メタ＋目次 */
+    .hero-bottom{
+      display:flex; justify-content:space-between; align-items:center;
+      gap:12px; flex-wrap:wrap;
+      padding:14px 16px;
+      border-top:1px solid rgba(11,27,58,.10);
+      background:rgba(255,255,255,.80);
+    }
+    .meta{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color:rgba(11,27,58,.62);
+      font-size:12px;
+    }
+    .author{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(11,27,58,.10);
+      background:rgba(255,255,255,.90);
+      box-shadow:var(--shadow2);
+    }
+    .av{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      font-weight:900; color:#fff;
+      background:linear-gradient(135deg, rgba(24,194,156,.88), rgba(30,107,255,.86));
+    }
+
+    .toc{
+      display:flex; flex-wrap:wrap; gap:8px;
+      align-items:center;
+    }
+    .toc a{
+      text-decoration:none;
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,27,58,.10);
+      background:rgba(255,255,255,.92);
+      color:rgba(11,27,58,.72);
+      transition:.15s ease;
+      white-space:nowrap;
+    }
+    .toc a:hover{border-color:rgba(30,107,255,.22); background:rgba(30,107,255,.10); color:#1146b8;}
+
+    .btn-back{
+      text-decoration:none; font-size:12px; font-weight:900;
+      padding:10px 12px; border-radius:12px;
+      border:1px solid rgba(30,107,255,.22);
+      background:rgba(30,107,255,.10);
+      color:#1146b8;
+      white-space:nowrap;
+    }
+
+    @media (max-width:720px){
+      .hero-copy{max-width: 92%;}
+      .hero-media::after{
+        background:
+          linear-gradient(180deg,
+            rgba(10,30,60,.72) 0%,
+            rgba(10,30,60,.52) 40%,
+            rgba(10,30,60,0) 76%
+          );
+      }
+      .hero-copy{left:16px; right:16px; bottom:16px;}
+    }
+
+    /* ===== image rail (他の写真を効果的に) ===== */
+    .rail{
+      margin:18px 0 6px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    @media (max-width:900px){
+      .rail{grid-template-columns:1fr; }
+    }
+    .rail-big, .rail-col{
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid rgba(11,27,58,.10);
+      box-shadow:var(--shadow2);
+      background:#fff;
+      position:relative;
+    }
+    .rail-big{ aspect-ratio: 16/9; }
+    .rail-big img{ width:100%; height:100%; object-fit:cover; object-position:50% 35%; }
+
+    .rail-col{
+      display:grid;
+      grid-template-rows: 1fr 1fr;
+      gap:12px;
+      padding:12px;
+      background:rgba(255,255,255,.86);
+    }
+    .rail-card{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(11,27,58,.10);
+      position:relative;
+      background:#0b1b3a;
+    }
+    .rail-card.one{ aspect-ratio: 16/10; }
+    .rail-card.two{ aspect-ratio: 1/1; }
+    .rail-card img{ width:100%; height:100%; object-fit:cover; }
+    .rail-cap{
+      position:absolute;
+      left:12px; bottom:12px;
+      padding:7px 10px;
+      font-size:12px;
+      font-weight:900;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.22);
+      color:#fff;
+      backdrop-filter: blur(10px);
+      text-shadow:0 10px 24px rgba(0,0,0,.28);
+    }
+
+    /* ===== article blocks ===== */
+    main{padding:6px 0 72px}
+    .intro{
+      margin:18px 0 12px;
+      padding:16px 18px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(11,27,58,.10);
+      border-radius:24px;
+      box-shadow:var(--shadow2);
+    }
+    .intro strong{color:#1146b8}
+    .intro p{margin:0; color:rgba(11,27,58,.74); font-size:14px}
+
+    .block{
+      margin-top:16px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(11,27,58,.10);
+      border-radius:24px;
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .block-head{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:18px 18px 14px;
+      border-bottom:1px solid rgba(11,27,58,.10);
+      background:
+        radial-gradient(900px 340px at 0% 0%, rgba(30,107,255,.08), transparent 60%),
+        rgba(30,107,255,.03);
+    }
+    .block-head h2{margin:0; font-size:18px; line-height:1.35;}
+    .kw{
+      font-size:12px; font-weight:900;
+      padding:7px 10px; border-radius:999px;
+      background:rgba(30,107,255,.10);
+      border:1px solid rgba(30,107,255,.18);
+      color:#1146b8;
+      white-space:nowrap;
+    }
+    .block-body{padding:16px 18px 18px}
+
+    /* Q&A */
+    .qa{
+      display:grid;
+      gap:12px;
+    }
+    .q, .a{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px 14px;
+      border-radius:18px;
+      border:1px solid rgba(11,27,58,.10);
+      background:rgba(255,255,255,.88);
+    }
+    .q{
+      background:rgba(30,107,255,.06);
+      border-color:rgba(30,107,255,.16);
+    }
+    .a{
+      background:rgba(24,194,156,.06);
+      border-color:rgba(24,194,156,.14);
+    }
+    .badgeQ, .badgeA{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      font-weight:1000; color:#fff;
+      flex:0 0 auto;
+    }
+    .badgeQ{ background:linear-gradient(135deg, rgba(30,107,255,.95), rgba(122,92,255,.86)); }
+    .badgeA{ background:linear-gradient(135deg, rgba(24,194,156,.92), rgba(30,107,255,.82)); }
+    .qa p{margin:0; color:rgba(11,27,58,.82); font-size:14px}
+    .qa .name{
+      display:block;
+      font-size:12px;
+      font-weight:900;
+      color:rgba(11,27,58,.62);
+      margin-bottom:6px;
+    }
+
+    /* small callout */
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border-left:4px solid rgba(122,92,255,.70);
+      background:rgba(122,92,255,.06);
+      border-radius:18px;
+      color:rgba(11,27,58,.74);
+      font-size:13px;
+    }
+    /* image break */
+    .photo-break{
+     margin:40px 0;
+     border-radius:24px;
+     overflow:hidden;
+     box-shadow:var(--shadow);
+    }
+   
+    /* ===== related ===== */
+.related{
+  margin-top:18px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(11,27,58,.10);
+  border-radius:24px;
+  box-shadow:var(--shadow2);
+  overflow:hidden;
+}
+.related-head{
+  padding:18px 18px 14px;
+  border-bottom:1px solid rgba(11,27,58,.10);
+  background:
+    radial-gradient(900px 340px at 0% 0%, rgba(122,92,255,.08), transparent 60%),
+    rgba(30,107,255,.03);
+}
+.related-head h2{margin:0; font-size:18px; line-height:1.35;}
+
+.related-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+  padding:16px 18px 18px;
+}
+@media (max-width:900px){
+  .related-grid{grid-template-columns:1fr; }
+}
+
+.rel-card{
+  display:grid;
+  grid-template-columns: 120px 1fr;
+  gap:12px;
+  align-items:center;
+  text-decoration:none;
+  border-radius:18px;
+  border:1px solid rgba(11,27,58,.10);
+  background:rgba(255,255,255,.88);
+  overflow:hidden;
+  transition:.18s ease;
+}
+.rel-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(30,107,255,.22);
+  box-shadow:0 16px 30px rgba(12,35,80,.10);
+}
+.rel-thumb{
+  width:100%;
+  height:100%;
+  min-height:92px;
+  background:#0b1b3a;
+}
+.rel-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.rel-body{padding:10px 10px 10px 0;}
+.rel-kicker{
+  font-size:12px;
+  font-weight:900;
+  color:rgba(11,27,58,.60);
+  margin:0 0 4px;
+}
+.rel-title{
+  margin:0;
+  font-size:14px;
+  font-weight:900;
+  line-height:1.45;
+  color:rgba(11,27,58,.86);
+}
+.rel-note{
+  margin:6px 0 0;
+  font-size:12px;
+  color:rgba(11,27,58,.62);
+}
+
+
+    /* footer + fab */
+    footer{
+      border-top:1px solid rgba(11,27,58,.10);
+      padding:18px 0 26px;
+      color:rgba(11,27,58,.60);
+      font-size:12px;
+      text-align:center;
+      background:rgba(255,255,255,.55);
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      margin:0 auto;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(11,27,58,.10);
+      background:rgba(255,255,255,.80);
+    }
+    .fab{
+      position:fixed; right:18px; bottom:18px;
+      width:44px; height:44px;
+      border-radius:999px;
+      border:1px solid rgba(30,107,255,.22);
+      background:rgba(255,255,255,.88);
+      box-shadow:var(--shadow2);
+      display:grid; place-items:center;
+      text-decoration:none;
+      color:#1146b8; font-weight:900;
+      opacity:0; pointer-events:none;
+      transform:translateY(6px);
+      transition:.18s ease;
+      z-index:80;
+    }
+    .fab.show{opacity:1; pointer-events:auto; transform:translateY(0)}
+  </style>
+</head>
+
+<body>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="./index.html" aria-label="採用トップへ">
+        <div class="mark">DG</div>
+        <div>
+          <strong>Daigas G&amp;P Solution｜採用（サンプル）</strong>
+          <small>Decision &amp; Work｜この仕事を選んだ理由</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="ページ内ナビ">
+        <a href="#kw01">不安</a>
+        <a href="#kw02">選択</a>
+        <a href="#kw03">ギャップ</a>
+        <a href="#kw04">責任</a>
+        <a href="#kw05">未来</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO (interview 1) ===== -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-wrap">
+
+        <div class="hero-media" aria-label="ヒーロー画像（16:9）">
+          <!-- ★ヒーロー写真：あなたの指定 -->
+          <!-- 置き場所：./img/interview-hero.jpg -->
+          <img src="./images/interview 1.png" alt="現場社員インタビュー（サンプル）">
+          <div class="hero-copy">
+            <span class="hero-kicker">INTERVIEW / SAMPLE</span>
+
+            <h1 class="hero-title">
+              エネルギーインフラを、<br>
+              止めない仕事。<br>
+              そして、進化させる仕事。
+            </h1>
+
+            <p class="hero-lead">
+              ポートフォリオ用に作成したサンプル記事です。実在の人物・部署とは関係ありません。<br>
+              “意思決定のストーリー”として、現場のリアルをQ&amp;Aで届けます。
+            </p>
+
+            <div class="hero-tags" aria-label="タグ">
+              <span class="pill blue">#エネルギーインフラ</span>
+              <span class="pill mint">#DX</span>
+              <span class="pill">#現場起点</span>
+              <span class="pill">#キャリア入社</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="meta" aria-label="記事メタ情報">
+            <div class="author">
+              <div class="av">A</div>
+              <div>
+                <div style="font-weight:900;">A.K.（仮名）</div>
+                <div style="font-size:12px; color:rgba(11,27,58,.62);">デジタル推進部／DX企画担当（サンプル設定）</div>
+              </div>
+            </div>
+            <span style="opacity:.5">•</span>
+            <span>インタビュアー：松井（サンプル）</span>
+            <span style="opacity:.5">•</span>
+            <span>読了目安：6分</span>
+            <span style="opacity:.5">•</span>
+            <span>更新：2025.12.15</span>
+          </div>
+
+          <div class="toc" aria-label="目次">
+            <a href="#kw01">Keyword 01｜不安</a>
+            <a href="#kw02">Keyword 02｜選択</a>
+            <a href="#kw03">Keyword 03｜ギャップ</a>
+            <a href="#kw04">Keyword 04｜責任</a>
+            <a href="#kw05">Keyword 05｜未来</a>
+          </div>
+
+          <a class="btn-back" href="./index.html">← 採用トップへ戻る</a>
+        </div>
+      </div>
+
+    
+
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <div class="content">
+
+        <section class="intro" aria-label="導入">
+          <p>
+            <strong>読みどころ：</strong>
+            「不安」→「選択」→「ギャップ」→「責任」→「未来」。
+            A.K.さんの意思決定を、松井がシンプルな質問でひも解きます。
+          </p>
+        </section>
+
+        <!-- kw01 -->
+        <section class="block" id="kw01">
+          <div class="block-head">
+            <h2>入社前、正直ここが不安だった</h2>
+            <span class="kw">Keyword 01｜不安</span>
+          </div>
+          <div class="block-body">
+            <div class="qa">
+              <div class="q">
+                <div class="badgeQ">Q</div>
+                <div>
+                  <span class="name">松井（インタビュアー）</span>
+                  <p>入社前にいちばん不安だったことを、率直に教えてください。</p>
+                </div>
+              </div>
+
+              <div class="a">
+                <div class="badgeA">A</div>
+                <div>
+                  <span class="name">A.K.さん（仮名）</span>
+                  <p>
+                    正直に言うと、「インフラ企業＝堅い、変化が少ない」という先入観がありました。私自身は、現場の課題を見つけて改善し続けることにやりがいを感じるタイプなので、入社後に“決まった運用を回すだけ”になったら成長が止まるのでは、と不安でした。もう一つは、専門知識の壁です。設備や安全、法令、関係者の多さなど、最初から全部を理解するのは難しい。そこで私は、会社の言葉よりも「現場の動き」を見ようと決めました。面談や見学で、改善提案がどれだけ歓迎され、実装までのスピードがあるかを確認したことが、背中を押してくれました。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout">※サンプル記事のため、内容は架空設定です（実在の人物・部署とは関係ありません）。</div>
+          </div>
+        </section>
+
+       <div class="photo-break">
+          <img src="images/work 1.png" alt="現場で作業する様子">
+       </div>
+
+        <!-- kw02 -->
+        <section class="block" id="kw02">
+          <div class="block-head">
+            <h2>なぜ、この会社・この仕事を選んだのか</h2>
+            <span class="kw">Keyword 02｜選択</span>
+          </div>
+          <div class="block-body">
+            <div class="qa">
+              <div class="q">
+                <div class="badgeQ">Q</div>
+                <div>
+                  <span class="name">松井（インタビュアー）</span>
+                  <p>最終的に「ここに決めた理由」を、シンプルに一言で言うと？</p>
+                </div>
+              </div>
+
+              <div class="a">
+                <div class="badgeA">A</div>
+                <div>
+                  <span class="name">A.K.さん（仮名）</span>
+                  <p>
+                    一言で言うと、「止めない責任」と「変える余白」が両方あると感じたからです。インフラは“動いて当たり前”なので、現場は慎重になりがちです。でも、慎重さと同時に、変えないと守れないものもある。例えば、点検や報告が属人化していると、忙しい時ほど抜けが出る。そこでデータ化・標準化を進めると、安全も品質も上がる。面談では、現場の方が「DXは現場のためにやる」と繰り返していて、机上の企画ではなく“運用まで責任を持つ”空気がありました。さらに、周囲を巻き込む前提で小さく試し、良ければ広げる文化がある。挑戦が許される環境なら、私の強み（現場ヒアリング→整理→実装の段取り）が活きると確信しました。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- kw03 -->
+        <section class="block" id="kw03">
+          <div class="block-head">
+            <h2>入社後に感じたギャップ</h2>
+            <span class="kw">Keyword 03｜ギャップ</span>
+          </div>
+          <div class="block-body">
+            <div class="qa">
+              <div class="q">
+                <div class="badgeQ">Q</div>
+                <div>
+                  <span class="name">松井（インタビュアー）</span>
+                  <p>入社して「想像と違った」と感じた点はありますか？</p>
+                </div>
+              </div>
+
+              <div class="a">
+                <div class="badgeA">A</div>
+                <div>
+                  <span class="name">A.K.さん（仮名）</span>
+                  <p>
+                    良い意味でのギャップは、現場の改善意欲の高さです。外から見ると“安定運用”の印象が強いですが、実際は「もっと安全に」「もっと早く」「もっと分かりやすく」を日常的に考えていました。驚いたのは、DXの目的が“効率化”だけではなく、属人化を減らして再現性を上げること、つまり安全や品質のためにあるという点です。一方で難しさもありました。関係者が多いので、正しさだけでは進まない。現場の忙しさや、既存手順への配慮、監査や法令の観点など、合意形成の設計が必要です。そこで私は、まず「困っている瞬間」を短いヒアリングで集め、改善効果が見える小さなプロトタイプを作って共有しました。実物があると会話が前に進む。ギャップは“壁”ではなく、段取りで越えられると学びました。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+          <div class="photo-break">
+          <img src="images/work 2.png" alt="現場で作業する様子">
+       </div>
+
+        <!-- kw04 -->
+        <section class="block" id="kw04">
+          <div class="block-head">
+            <h2>責任が増えた瞬間、どう向き合ったか</h2>
+            <span class="kw">Keyword 04｜責任</span>
+          </div>
+          <div class="block-body">
+            <div class="qa">
+              <div class="q">
+                <div class="badgeQ">Q</div>
+                <div>
+                  <span class="name">松井（インタビュアー）</span>
+                  <p>「自分の判断が現場に影響する」と感じたのはどんな時ですか？</p>
+                </div>
+              </div>
+
+              <div class="a">
+                <div class="badgeA">A</div>
+                <div>
+                  <span class="name">A.K.さん（仮名）</span>
+                  <p>
+                    変更提案が“便利そう”に見えても、現場の安全や品質に影響する可能性があるときです。例えば、点検記録の入力項目を減らすと負担は減りますが、後から原因を追えなくなる恐れもある。そこで私は、提案の前に「守るべき要件」を先に整理します。法令・監査・安全・品質・教育の観点で、残すべき情報は何かを明確にし、その上で削れる部分を決める。次に、現場で試験運用を行い、入力時間・抜け漏れ・不明点の数を測る。数字と声の両方が揃って初めて、全体展開に進めます。責任が重いと感じるほど、結局は“丁寧な段取り”が安心につながる。急がないために急ぐ、という感覚ですね。結果として、現場の方が「これなら使える」と言ってくれる瞬間が一番嬉しいです。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- kw05 -->
+        <section class="block" id="kw05">
+          <div class="block-head">
+            <h2>これから、どんな未来をつくりたい？</h2>
+            <span class="kw">Keyword 05｜未来</span>
+          </div>
+          <div class="block-body">
+            <div class="qa">
+              <div class="q">
+                <div class="badgeQ">Q</div>
+                <div>
+                  <span class="name">松井（インタビュアー）</span>
+                  <p>最後に、今後やっていきたいことを教えてください。</p>
+                </div>
+              </div>
+
+              <div class="a">
+                <div class="badgeA">A</div>
+                <div>
+                  <span class="name">A.K.さん（仮名）</span>
+                  <p>
+                    “現場の知恵が、仕組みとして残る状態”を作りたいです。現場のベテランほど、判断の理由を体で覚えている。でも忙しいと共有が難しく、個人に蓄積されたままになってしまう。そこで、日々の点検・記録・ヒヤリハットなどを、無理なく集められる形に整え、次の人が同じ品質で判断できるようにしたい。具体的には、入力を増やすのではなく、写真・選択式・自動入力などで負担を減らし、必要な情報が自然と集まる設計にする。さらに、集まったデータを見える化して、改善の優先順位が分かるようにする。インフラは、止めないだけでなく進化させる責任がある。私は、現場に寄り添いながら“安心して変えられる仕組み”を増やしていきたいと思っています。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout">
+              次の一歩：この下に「1日の流れ」「チーム体制」「入社後のサポート」などの章を足すと、採用サイトっぽさがさらに上がります。
+            </div>
+          </div>
+        </section>
+<!-- ===== related ===== -->
+<section class="related" aria-label="関連記事">
+  <div class="related-head">
+    <h2>関連記事</h2>
+  </div>
+
+  <div class="related-grid">
+    <a class="rel-card" href="./article-day1.html">
+      <div class="rel-thumb">
+        <img src="./images/related-1.png" alt="関連記事サムネイル：1日の流れ">
+      </div>
+      <div class="rel-body">
+        <p class="rel-kicker">RELATED 01</p>
+        <p class="rel-title">現場×DXの1日｜“止めない”を支える段取り</p>
+        <p class="rel-note">点検〜記録〜共有までを短く紹介</p>
+      </div>
+    </a>
+
+    <a class="rel-card" href="./article-team.html">
+      <div class="rel-thumb">
+        <img src="./images/related-2.png" alt="関連記事サムネイル：チーム体制">
+      </div>
+      <div class="rel-body">
+        <p class="rel-kicker">RELATED 02</p>
+        <p class="rel-title">チーム体制と進め方｜合意形成を速くするコツ</p>
+        <p class="rel-note">関係者が多い現場での進め方</p>
+      </div>
+    </a>
+
+    <a class="rel-card" href="./article-support.html">
+      <div class="rel-thumb">
+        <img src="./images/related-3.png" alt="関連記事サムネイル：入社後サポート">
+      </div>
+      <div class="rel-body">
+        <p class="rel-kicker">RELATED 03</p>
+        <p class="rel-title">入社後サポート｜キャッチアップを設計する</p>
+        <p class="rel-note">学びの順番とフォローの考え方</p>
+      </div>
+    </a>
+  </div>
+      </div>
+    </div>
+   
+</section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="badge">
+        <span>※ This page is a portfolio sample.</span>
+        <span>— Daigas G&amp;P Solution recruitment style mock —</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab" id="fab" href="#top" aria-label="ページ上部へ">↑</a>
+
+  <script>
+    // progress + fab
+    const bar = document.getElementById('bar');
+    const fab = document.getElementById('fab');
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const st = doc.scrollTop || document.body.scrollTop;
+      const h = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
+      const p = h > 0 ? (st / h) * 100 : 0;
+      bar.style.width = p.toFixed(2) + '%';
+      if (st > 420) fab.classList.add('show'); else fab.classList.remove('show');
+    };
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    updateProgress();
+  </script>
+
+  <!--
+    ===== 画像ファイル名（これに合わせて ./img/ に置けばOK） =====
+    interview 1（ヒーロー）:  ./img/interview-hero.jpg
+    interview 2（レール大）: ./img/interview-scene.jpg
+    work 1（PC）:            ./img/work-laptop.jpg
+    work 2（バルブ）:        ./img/work-valve.jpg
+
+    ※いまPNGなら、拡張子を .png に変えるだけでOK
+  -->
+</body>
+</html>
