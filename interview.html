@@ -7,7 +7,7 @@
   <meta name="description" content="Daigas G&P Solution採用（サンプル）｜意思決定のストーリーをQ&Aで届けるインタビュー記事。" />
 
   <style>
-  :root{
+ :root{
   --bg:#f6f9ff;
   --panel:#ffffff;
   --text:#0b1b3a;
@@ -104,7 +104,7 @@ header{
   background:#fff;
 }
 
-/* 16:9 固定で“ドカン” */
+/* 16:9 固定（PC/タブレット） */
 .hero-media{
   position:relative;
   width:100%;
@@ -112,11 +112,13 @@ header{
   overflow:hidden;
   background:#0b1b3a;
 }
+
+/* ★見切れ対策：上を優先（PC） */
 .hero-media img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position: 55% 35%;
+  object-position: 50% 25%;
   transform:scale(1.02);
 }
 
@@ -217,7 +219,9 @@ header{
 }
 
 .toc{
-  display:flex; flex-wrap:wrap; gap:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
   align-items:center;
 }
 .toc a{
@@ -242,6 +246,7 @@ header{
   white-space:nowrap;
 }
 
+/* ヒーロー：スマホ側は縦グラデに */
 @media (max-width:720px){
   .hero-copy{max-width: 92%;}
   .hero-media::after{
@@ -255,7 +260,25 @@ header{
   .hero-copy{left:16px; right:16px; bottom:16px;}
 }
 
-/* ===== ここがレスポンシブ改善の本命（hero-bottom + toc） ===== */
+/* ★見切れ対策：タブレット */
+@media (max-width: 900px){
+  .hero-media img{
+    object-position: 50% 20%;
+  }
+}
+
+/* ★見切れ対策：スマホは縦を稼ぐ（超重要） */
+@media (max-width: 600px){
+  .hero-media{
+    aspect-ratio: 4 / 5;
+  }
+  .hero-media img{
+    object-position: 50% 15%;
+    transform:scale(1.0);
+  }
+}
+
+/* ===== レスポンシブ改善（hero-bottom + toc） ===== */
 @media (max-width: 860px){
   .hero-bottom{
     flex-direction: column;
@@ -269,7 +292,7 @@ header{
     overflow-x:auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 4px;
-    flex-wrap:nowrap;           /* ここ重要：横スクロール前提 */
+    flex-wrap:nowrap; /* 横スクロール前提 */
   }
   .toc a{ flex:0 0 auto; }
 
@@ -888,4 +911,5 @@ footer{
   -->
 </body>
 </html>
+
 
