@@ -646,6 +646,85 @@
         display: none; /* スマホではバーを消して少しスッキリ */
       }
     }
+    /* ===== PICK UP ===== */
+.pickup-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:20px;
+}
+
+.pickup-card{
+  display:block;
+  border-radius: var(--radius-md);
+  background:#fff;
+  border:1px solid #e5e7eb;
+  overflow:hidden;
+  box-shadow: 0 10px 26px rgba(148, 163, 184, 0.12);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.pickup-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(148, 163, 184, 0.18);
+}
+
+.pickup-visual{
+  height: 160px;
+  overflow:hidden;
+  background:#0b1120;
+}
+
+.pickup-visual img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform .25s ease;
+}
+
+.pickup-card:hover .pickup-visual img{
+  transform: scale(1.06);
+}
+
+.pickup-body{
+  padding: 12px 14px 14px;
+}
+
+.pickup-label{
+  display:inline-flex;
+  font-size:10px;
+  padding:4px 8px;
+  border-radius:999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.pickup-title{
+  font-size:14px;
+  font-weight: 650;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.pickup-desc{
+  font-size:12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+.pickup-link{
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* responsive */
+@media (max-width: 960px){
+  .pickup-grid{ grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 <body>
@@ -727,6 +806,53 @@
       </section>
 
       <!-- RECRUIT MENU（HEROに少しかぶせる） -->
+      <!-- PICK UP -->
+<section class="section" id="pickup">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">PICK UP</div>
+      <h2 class="section-title">注目コンテンツ</h2>
+      <p class="section-sub">
+        まずはここから。仕事・人・イベント情報の入口をまとめました。
+      </p>
+    </div>
+
+    <div class="pickup-grid">
+      <!-- ① interview.html -->
+      <a class="pickup-card" href="interview.html">
+        <div class="pickup-visual">
+          <img src="images/interview 1.png" alt="社員インタビュー（サンプル）">
+        </div>
+        <div class="pickup-body">
+          <span class="pickup-label">INTERVIEW</span>
+          <div class="pickup-title">仕事と人を知る｜社員インタビュー</div>
+          <div class="pickup-desc">
+            意思決定のストーリーをQ&Aで。現場起点のリアルを短時間で読める記事です。
+          </div>
+          <div class="pickup-link">記事を見る →</div>
+        </div>
+      </a>
+
+      <!-- ② 外部リンク（samplemm.com） -->
+      <a class="pickup-card"
+         href="https://miwa-del.github.io/samplemm.com/"
+         target="_blank" rel="noopener">
+        <div class="pickup-visual">
+          <img src="images/DX.png" alt="説明会・イベント情報（サンプル）">
+        </div>
+        <div class="pickup-body">
+          <span class="pickup-label">EVENT</span>
+          <div class="pickup-title">説明会・イベント｜参加受付ページ</div>
+          <div class="pickup-desc">
+            会社説明会や仕事体験の一覧へ。日程・申込などの導線をまとめています。
+          </div>
+          <div class="pickup-link">イベントページへ →</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
       <section class="section section--overlap" id="recruit-menu">
         <div class="container">
           <div class="section-header">
@@ -950,6 +1076,7 @@
   </div>
 </body>
 </html>
+
 
 
 
